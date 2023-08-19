@@ -1,4 +1,3 @@
-
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
@@ -25,7 +24,6 @@ app.use(
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
   })
 )
-
 
 app.use(localsMiddleware)
 app.use("/",rootRouter);
