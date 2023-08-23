@@ -26,6 +26,8 @@ app.use(
 )
 
 app.use(localsMiddleware)
+//static("uploads") -> 노출시키고 싶은 폴더 이름 작성
+app.use("/uploads", express.static("uploads"));
 app.use("/",rootRouter);
 app.use("/videos",videoRouter);
 app.use("/users",userRouter);
