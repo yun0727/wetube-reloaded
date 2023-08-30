@@ -103,6 +103,7 @@ const handleMouseLeave = () =>{
 }
 
 playBtn.addEventListener("click", handlePlayerClick);
+video.addEventListener("click", handlePlayerClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
 video.addEventListener("loadeddata", handleLoadedMetadata);
