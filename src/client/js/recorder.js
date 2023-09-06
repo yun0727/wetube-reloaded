@@ -30,22 +30,22 @@ const handleDownload = async() =>{
   const ffmpeg = createFFmpeg({log:true});
   await ffmpeg.load();
 
-  ffmpeg.FS("writeFile", "files.input", await fetchFile(videoFile));
+  ffmpeg.FS("writeFile", files.input, await fetchFile(videoFile));
 
-  await ffmpeg.run("-i", "files.input", "-r", "60", "files.output");
+  await ffmpeg.run("-i", files.input, "-r", "60", files.output);
 
   await ffmpeg.run(
     "-i", 
-    "files.input",
+    files.input,
     "-ss",
     "00:00:01",
     "-frames:v",
     "1",
-    "files.thumb",
+    files.thumb,
     );
 
-  const mp4File = ffmpeg.FS("readFile", "files.output");
-  const thumbFile = ffmpeg.FS("readFile", "files.thumb");
+  const mp4File = ffmpeg.FS("readFile", files.output);
+  const thumbFile = ffmpeg.FS("readFile", files.thumb);
 
   const mp4Blob = new Blob([mp4File.buffer], {type:"video/mp4"});
   const thumbBlob = new Blob([thumbFile.buffer], {type:"image/jpg"});
@@ -56,9 +56,9 @@ const handleDownload = async() =>{
   downloadFile(mp4Url, "MyRecording.mp4");
   downloadFile(thumbUrl, "MyThumbnail.jpg");
 
-  ffmpeg.FS("unlink", "files.input")
-  ffmpeg.FS("unlink", "files.output")
-  ffmpeg.FS("unlink", "files.thumb");
+  ffmpeg.FS("unlink", files.input)
+  ffmpeg.FS("unlink", files.output)
+  ffmpeg.FS("unlink", files.thumb);
 
   URL.revokeObjectURL(mp4Url);
   URL.revokeObjectURL(thumbUrl);
