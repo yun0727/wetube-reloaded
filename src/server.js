@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
+import flash from "express-flash";
 import MongoStore from "connect-mongo";
 import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
@@ -34,6 +35,7 @@ app.use(
   })
 )
 
+app.use(flash());
 app.use(localsMiddleware)
 //static("uploads") -> 노출시키고 싶은 폴더 이름 작성
 app.use("/uploads", express.static("uploads"));
