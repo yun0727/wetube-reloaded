@@ -106,18 +106,19 @@ export const finishGithubLogin = async (req, res) => {
         headers: {
           Authorization: `token ${access_token}`,
         },
-
       })
-    ).json();
+    ).json()
     const emailObj = emailData.find(
       (email) => email.primary === true && email.verified === true
     );
     if (!emailObj) {
+      // set notification
       return res.redirect("/login");
     }
-    let user = await User.findOne({email: emailObj.email});
-    if(!user) {
-      user=await User.create({
+    let user = await User.findOne({ email: emailObj.email });
+    if (!user) {
+      user = await User.create({
+        avatarUrl: userData.avatar_url,
         name: userData.name,
         username: userData.login,
         email: emailObj.email,
@@ -128,7 +129,7 @@ export const finishGithubLogin = async (req, res) => {
     }
     req.session.loggedIn = true;
     req.session.user = user;
-    return res.redirect("/");
+    return res.redirect("/")
   } else {
     return res.redirect("/login");
   }
