@@ -34,7 +34,7 @@ export const getEdit = async (req, res) => {
 export const postEdit = async (req, res) => {
   const {
     user:{_id},
-  } = req.session
+  } = req.session;
   const { id } = req.params;
   const { title, description, hashtags } = req.body;
   const video = await Video.exists({ _id: id });
