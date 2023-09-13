@@ -15,7 +15,8 @@ const handleSubmit = (event) =>{
       "Content-type":"application/json",
     },
     body: JSON.stringify({text})
-  })
+  });
+  textarea.value = "";
 };
 form.addEventListener("submit", handleSubmit);
 
