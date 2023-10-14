@@ -11,7 +11,7 @@ const s3 = new aws.S3({
 
 const multerUploader = multerS3({
   s3 : s3,
-  bucket: 'some-bucket'
+  bucket: 'wetube-2023'
 })
 
 export const localsMiddleware=(req,res, next)=>{
