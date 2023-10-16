@@ -17,14 +17,14 @@ let controlsMovementTimeout = null;
 let volumeValue = 0.5;
 video.volume = volumeValue;
 
-const handlePlayerClick = (e) => {
-  if (video.paused){
-    video.play()
-  } else{
-    video.pause()
+const handlePlayClick = (e) => {
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
   }
   playBtnIcon.classList = video.paused ? "fas fa-play" : "fas fa-pause";
-}
+};
 
 const handleMuteClick = (e) => {
   if (video.muted){
@@ -110,8 +110,8 @@ const handleEnded = () =>{
   })
 }
 
-playBtn.addEventListener("click", handlePlayerClick);
-video.addEventListener("click", handlePlayerClick);
+playBtn.addEventListener("click", handlePlayClick);
+video.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
 video.addEventListener("loadedmetadata", handleLoadedData);
