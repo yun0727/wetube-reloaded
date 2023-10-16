@@ -58,9 +58,6 @@ const handleLoadedData = () => {
   timeline.max = Math.floor(video.duration);
 };
 
-if (video){
-  handleLoadedData();
-}
 
 const handleTimeUpdate = () =>{
   currenTime.innerText = formatTime(Math.floor(video.currentTime));
