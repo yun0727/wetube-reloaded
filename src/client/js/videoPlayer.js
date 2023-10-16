@@ -117,7 +117,7 @@ playBtn.addEventListener("click", handlePlayerClick);
 video.addEventListener("click", handlePlayerClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
-video.addEventListener("loadeddata", handleLoadedData);
+video.addEventListener("loadedmetadata", handleLoadedData);
 video.addEventListener("timeupdate", handleTimeUpdate);
 video.addEventListener("ended", handleEnded);
 videoContainer.addEventListener("mousemove", handleMouseMove);
